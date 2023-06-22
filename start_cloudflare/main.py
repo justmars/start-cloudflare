@@ -1,7 +1,9 @@
 from enum import Enum
 from typing import Final
 
-from pydantic import BaseSettings, EmailStr, Field
+from pydantic import EmailStr, Field
+from pydantic_settings import BaseSettings
+from pydantic_settings.main import SettingsConfigDict
 
 CF_API_URL: Final = "https://api.cloudflare.com"
 MIME_TYPE: dict[str, str] = {"Content-Type": "application/json"}
@@ -63,35 +65,32 @@ class CF(BaseSettings):
 
     """  # noqa: E501
 
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")  # type: ignore # noqa: E501
     account_id: str | None = Field(
         default="ACCT",
         repr=False,
-        env="CF_ACCT_ID",
+        validation_alias="CF_ACCT_ID",
     )
     version: int = Field(
         default=4,
         repr=True,
-        env="CF_API_VERSION",
+        validation_alias="CF_API_VERSION",
     )
     email: EmailStr | None = Field(
         default=None,
         repr=True,
-        env="CF_ACCT_EMAIL",
+        validation_alias="CF_ACCT_EMAIL",
     )
     global_api_key: str | None = Field(
         default=None,
         repr=False,
-        env="CF_GLOBAL_API_KEY",
+        validation_alias="CF_GLOBAL_API_KEY",
     )
     origin_ca_key: str | None = Field(
         default=None,
         repr=False,
-        env="CF_ORIGIN_CA_KEY",
+        validation_alias="CF_ORIGIN_CA_KEY",
     )
-
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
 
     @property
     def head_email(self) -> dict[str, str]:
