@@ -98,7 +98,9 @@ class CF(BaseSettings):
         'CF_ACCT_EMAIL' is set.
 
         Examples:
-            >>> cf = CF(email='brightness@long.ago')
+            >>> import os
+            >>> os.environ['CF_ACCT_EMAIL'] = 'brightness@long.ago'
+            >>> cf = CF()
             >>> cf.head_email
             {'X-Auth-Email': 'brightness@long.ago'}
 
@@ -115,7 +117,9 @@ class CF(BaseSettings):
         'X-Auth-Key' is set.
 
         Examples:
-            >>> cf = CF(global_api_key='mytoken')
+            >>> import os
+            >>> os.environ['CF_GLOBAL_API_KEY'] = 'mytoken'
+            >>> cf = CF()
             >>> cf.head_auth_key
             {'X-Auth-Key': 'mytoken'}
 
@@ -148,7 +152,9 @@ class CF(BaseSettings):
             >>> cf = CF()
             >>> cf.base
             'https://api.cloudflare.com/client/v4'
-            >>> cf = CF(version=5)
+            >>> import os
+            >>> os.environ['CF_API_VERSION'] = '5'
+            >>> cf = CF()
             >>> cf.base
             'https://api.cloudflare.com/client/v5'
 
