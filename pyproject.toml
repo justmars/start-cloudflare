@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "start-cloudflare"
 description = "A Pydantic BaseSettings class intended to be extended by other Cloudflare services."
-version = "0.0.3"
+version = "0.0.4"
 authors = ["Marcelino G. Veloso III <contact@mv3.dev>"]
 readme = "README.md"
 homepage = "https://mv3.dev"
@@ -28,7 +28,7 @@ pytest-cov = "^4.1"
 pre-commit = "^3.3"
 mkdocs = "^1.4.3"
 mkdocstrings = {extras = ["python"], version = "^0.22.0"}
-mkdocs-material = "^9.1.16"
+mkdocs-material = "^9.2.6"
 ipykernel = "^6.23"
 
 [tool.pytest.ini_options]
