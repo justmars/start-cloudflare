@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "start-cloudflare"
 description = "A Pydantic BaseSettings class intended to be extended by other Cloudflare services."
-version = "0.0.4"
+version = "0.0.5"
 authors = ["Marcelino G. Veloso III <contact@mv3.dev>"]
 readme = "README.md"
 homepage = "https://mv3.dev"
