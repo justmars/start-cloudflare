@@ -5,7 +5,3 @@
 ## Development
 
 See [documentation](https://justmars.github.io/start-cloudflare).
-
-1. Run `poetry install`
-2. Run `poetry shell`
-3. Run `pytest`

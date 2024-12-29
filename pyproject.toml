@@ -1,49 +1,36 @@
-[tool.poetry]
+[project]
 name = "start-cloudflare"
+version = "0.0.6"
 description = "A Pydantic BaseSettings class intended to be extended by other Cloudflare services."
-version = "0.0.4"
-authors = ["Marcelino G. Veloso III <contact@mv3.dev>"]
 readme = "README.md"
-homepage = "https://mv3.dev"
-repository = "https://github.com/justmars/start-cloudflare"
-documentation = "https://justmars.github.io/start-cloudflare"
-classifiers = [
-  "Programming Language :: Python :: 3.11",
-  "Typing :: Typed",
-  "Development Status :: 4 - Beta",
-  "Framework :: Pytest",
+requires-python = ">=3.11"
+dependencies = [
+  "python-dotenv >= 1.0",
+  "pydantic-settings >= 2.0",
+  "pydantic >= 2.0",
+  "email-validator >= 2.0.0.post2"
 ]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-python-dotenv = "^1.0"
-pydantic-settings = "^2.0"
-pydantic = "^2.0"
-email-validator = "^2.0.0.post2"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.3"
-pytest-env = "^0.8.1"
-pytest-cov = "^4.1"
-pre-commit = "^3.3"
-mkdocs = "^1.4.3"
-mkdocstrings = {extras = ["python"], version = "^0.22.0"}
-mkdocs-material = "^9.2.6"
-ipykernel = "^6.23"
+[dependency-groups]
+dev = [
+  "rich >= 13.9.4",
+  "jupyter >= 1.1.1",
+  "notebook >= 7.3.2",
+  # testing
+  "pytest >= 8.3",
+  "pytest-cov >= 5.0",
+  # docs
+  "mkdocs >= 1.6.0",
+  "mkdocstrings [python] >= 0.25.1",
+  "mkdocs-material >= 9.5",
+]
 
 [tool.pytest.ini_options]
-minversion = "7.3"
+minversion = "8.3"
 addopts = "-ra -q --cov --doctest-modules"
-filterwarnings = [
-  "ignore::DeprecationWarning", # DeprecationWarning: pkg_resources is deprecated as an API
-]
 testpaths = ["tests", "start_cloudflare"]
 
-[tool.ruff]
+[tool.ruff.lint]
 ignore = ["F401", "F403"]
 fixable = ["F", "E", "W", "I001"]
 select = ["F", "E", "W", "I001"]
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

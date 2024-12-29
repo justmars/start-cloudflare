@@ -65,7 +65,11 @@ class CF(BaseSettings):
 
     """  # noqa: E501
 
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")  # type: ignore # noqa: E501
+    model_config = SettingsConfigDict(
+        extra="ignore",
+        env_file=".env",
+        env_file_encoding="utf-8",
+    )  # without extra='ignore', other environment variables in the .env file will throw Validation error # noqa: E501
     account_id: str | None = Field(
         default="ACCT",
         repr=False,
