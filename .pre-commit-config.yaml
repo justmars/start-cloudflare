@@ -3,7 +3,7 @@ default_language_version:
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v6.0.0
     hooks:
       - id: check-added-large-files
       - id: end-of-file-fixer
@@ -11,13 +11,15 @@ repos:
       - id: name-tests-test
         args: ["--django"]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.8.4
+    # Ruff version.
+    rev: v0.12.10
     hooks:
       # Run the linter.
       - id: ruff
         args: [ --fix ]
       # Run the formatter.
       - id: ruff-format
+        types_or: [ python, pyi ]
   - repo: https://github.com/kynan/nbstripout
     rev: 0.7.1
     hooks:

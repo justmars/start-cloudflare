@@ -3,7 +3,6 @@ set dotenv-load
 # prepare to commit
 prep:
   pre-commit run --all-files
-  pytest
 
 # serve docs
 docs:
