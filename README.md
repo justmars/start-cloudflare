@@ -1,6 +1,6 @@
 # start-cloudflare
 
-![Github CI](https://github.com/justmars/start-cloudflare/actions/workflows/main.yml/badge.svg)
+![Github CI](https://github.com/justmars/start-cloudflare/actions/workflows/ci.yml/badge.svg)
 
 ## Development
 

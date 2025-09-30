@@ -43,8 +43,8 @@ class CF(BaseSettings):
     :--|:--:|:--
     `CF_ACCT_ID`, defaults to 'ACCT' | Signup Account ID | Assigned on signup `https://dash.cloudflare.com/<ACCT_ID>/`
     Optional: `CF_ACCT_EMAIL` | Account Email | What you signed up with
-    Optional: `CF_GLOBAL_API_KEY` | See [docs](https://developers.cloudflare.com/fundamentals/api/get-started/keys/) | `https://dash.cloudflare.com/profile/api-tokens`
-    Optional: `CF_ORIGIN_CA_KEY` | See [docs](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/) | `https://dash.cloudflare.com/profile/api-tokens`
+    Optional: `CF_GLOBAL_API_KEY` | Deprecated/legacy. Cloudflare recommends using API Tokens for all new integrations. See [docs](https://developers.cloudflare.com/fundamentals/api/get-started/keys/) | `https://dash.cloudflare.com/profile/api-tokens`
+    Optional: `CF_ORIGIN_CA_KEY` |  Used for Origin CA certificates, not for general API access. See [docs](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/) | `https://dash.cloudflare.com/profile/api-tokens`
 
     Examples:
         >>> import os
@@ -89,6 +89,14 @@ class CF(BaseSettings):
         default=None,
         repr=False,
         validation_alias="CF_GLOBAL_API_KEY",
+        # Deprecated: Cloudflare Global API Key is considered legacy and should not be
+        # used for new integrations.
+        # See: https://developers.cloudflare.com/api/fundamentals/api-keys/
+        description=(
+            "Legacy Global API Key. Deprecated by Cloudflare. "
+            "Use API Tokens for new integrations. "
+            "See: https://developers.cloudflare.com/api/fundamentals/api-keys/"
+        ),
     )
     origin_ca_key: str | None = Field(
         default=None,
