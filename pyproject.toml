@@ -9,7 +9,7 @@ description = "A Pydantic BaseSettings class intended to be extended by other Cl
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-  "python-dotenv >= 1.0",
+  "python-dotenv >= 1.2.2",
   "pydantic-settings >= 2.14.0",
   "pydantic >= 2.13.3",
   "email-validator >= 2.3.0"
