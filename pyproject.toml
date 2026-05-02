@@ -1,29 +1,25 @@
 [project]
 name = "start-cloudflare"
-version = "0.0.7"
+version = "0.0.8"
 description = "A Pydantic BaseSettings class intended to be extended by other Cloudflare services."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
   "python-dotenv >= 1.0",
-  "pydantic-settings >= 2.10.1",
-  "pydantic >= 2.11.9",
+  "pydantic-settings",
+  "pydantic",
   "email-validator >= 2.3.0"
 ]
 
 [dependency-groups]
 dev = [
-  "rich >= 14.1",
-  "jupyter >= 1.1.1",
-  "notebook >= 7.4.3",
-    "ipykernel>=6.30.1",
-    # testing
-    "pytest >= 8.4",
-    "pytest-cov >= 7.0",
-    # docs
-    "mkdocs >= 1.6.1",
-    "mkdocs-material >= 9.6.20",
-    "mkdocstrings[python] >= 0.30.1",
+  "rich >= 15.0",
+  # testing
+  "pytest >= 9.0",
+  "pytest-cov >= 7.0",
+  # docs
+  "zensical>=0.0.39",
+  "mkdocstrings-python>=2.0.3",
 ]
 
 [tool.pytest.ini_options]
