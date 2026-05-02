@@ -46,20 +46,27 @@ class CF(BaseSettings):
     Optional: `CF_GLOBAL_API_KEY` | Deprecated/legacy. Cloudflare recommends using API Tokens for all new integrations. See [docs](https://developers.cloudflare.com/fundamentals/api/get-started/keys/) | `https://dash.cloudflare.com/profile/api-tokens`
     Optional: `CF_ORIGIN_CA_KEY` |  Used for Origin CA certificates, not for general API access. See [docs](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/) | `https://dash.cloudflare.com/profile/api-tokens`
 
-    Examples:
-        >>> import os
-        >>> cf = CF()
-        >>> cf
-        CF(version=4, email=None)
-        >>> cf.account_id
-        'ACCT'
-        >>> from start_cloudflare import CF
-        >>> os.environ['CF_ACCT_ID'] = "<ACCT_ID> from https://dash.cloudflare.com/<ACCT_ID>/"
-        >>> cf = CF()
-        >>> cf
-        CF(version=4, email=None)
-        >>> cf.account_id
-        '<ACCT_ID> from https://dash.cloudflare.com/<ACCT_ID>/'
+        Examples:
+            >>> import os
+            >>> cf_env = getfixture("cf_env")
+            >>> cf = CF()
+            >>> cf.version == int(cf_env("CF_API_VERSION", 4))
+            True
+            >>> expected_email = cf_env("CF_ACCT_EMAIL")
+            >>> cf.email is None if expected_email is None else str(cf.email) == expected_email
+            True
+            >>> cf.account_id == cf_env("CF_ACCT_ID", "ACCT")
+            True
+            >>> from start_cloudflare import CF
+            >>> os.environ['CF_ACCT_ID'] = "<ACCT_ID> from https://dash.cloudflare.com/<ACCT_ID>/"
+            >>> cf = CF()
+            >>> cf.version == int(cf_env("CF_API_VERSION", 4))
+            True
+            >>> expected_email = cf_env("CF_ACCT_EMAIL")
+            >>> cf.email is None if expected_email is None else str(cf.email) == expected_email
+            True
+            >>> cf.account_id
+            '<ACCT_ID> from https://dash.cloudflare.com/<ACCT_ID>/'
         >>> CF_API_URL
         'https://api.cloudflare.com'
 
